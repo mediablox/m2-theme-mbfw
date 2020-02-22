@@ -1,0 +1,43 @@
+{
+  "name": "m2-theme-mbfw",
+  "version": "1.0.0",
+  "description": "A bare bones Magento 2 Blank theme, which includes most of the template and xml files from magento/modul-theme ready for customisation.",
+  "main": "index.js",
+  "scripts": {
+    "setup": "gulp setup",
+    "start": "gulp",
+    "build": "gulp build",
+    "styles": "gulp scss",
+    "js": "gulp javascript"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mediablox/m2-theme-mbfw.git"
+  },
+  "author": "Dean Morgan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mediablox/m2-theme-mbfw/issues"
+  },
+  "homepage": "https://github.com/mediablox/m2-theme-mbfw#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.7.4",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "release-it": "^12.4.3",
+    "require-dir": "^1.2.0",
+    "undertaker-forward-reference": "^1.0.2"
+  },
+  "dependencies": {
+    "mb.mbfw.components": "git+https://github.com/mediablox/mb.mbfw.components.git",
+    "mb.mbfw.js": "git+https://github.com/mediablox/mb.mbfw.js.git",
+    "mb.mbfw.scss": "git+https://github.com/mediablox/mb.mbfw.scss.git"
+  }
+}
