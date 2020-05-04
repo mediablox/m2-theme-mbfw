@@ -10,7 +10,7 @@
 ?>
 <?php if ($block->displayNoscriptNotice()) : ?>
     <noscript>
-        <div class="message global noscript">
+        <div class="c-notice message global noscript">
             <div class="content">
                 <p>
                     <strong><?= $block->escapeHtml(__('JavaScript seems to be disabled in your browser.')) ?></strong>
@@ -21,7 +21,7 @@
     </noscript>
 <?php endif; ?>
 <?php if ($block->displayNoLocalStorageNotice()) : ?>
-    <div class="notice global site local_storage" style="display: none;">
+    <div class="c-notice global site local_storage" style="display: none;">
         <div class="content">
             <p>
                 <strong><?= $block->escapeHtml(__('Local Storage seems to be disabled in your browser.')) ?></strong><br />
@@ -48,7 +48,7 @@ require(['jquery'], function(jQuery){
 </script>
 <?php endif; ?>
 <?php if ($block->displayDemoNotice()) : ?>
-    <div class="message global demo">
+    <div class="c-notice message global demo">
         <div class="content">
             <p><?= $block->escapeHtml(__('This is a demo store. No orders will be fulfilled.')) ?></p>
         </div>

@@ -9,9 +9,8 @@
  */
 $storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt()
 ?>
-<span data-action="toggle-nav" class="action nav-toggle"><span><?= $block->escapeHtml(__('Toggle Nav')) ?></span></span>
 <a
-    class="logo"
+    class="c-logo"
     href="<?= $block->escapeUrl($block->getUrl('')) ?>"
     title="<?= $block->escapeHtmlAttr($storeName) ?>"
     aria-label="store logo">

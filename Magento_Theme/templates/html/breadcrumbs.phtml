@@ -5,10 +5,10 @@
  */
 ?>
 <?php if ($crumbs && is_array($crumbs)) : ?>
-<div class="breadcrumbs">
-    <ul class="items">
+<div class="c-breadcrumbs c-breadcrumbs--theme">
+    <ul class="c-breadcrumbs__list o-list-inline">
         <?php foreach ($crumbs as $crumbName => $crumbInfo) : ?>
-            <li class="item <?= $block->escapeHtmlAttr($crumbName) ?>">
+            <li class="c-breadcrumbs__item c-breadcrumbs__item--<?= $block->escapeHtmlAttr($crumbName) ?> o-list-inline__item">
             <?php if ($crumbInfo['link']) : ?>
                 <a href="<?= $block->escapeUrl($crumbInfo['link']) ?>"
                    title="<?= $block->escapeHtmlAttr($crumbInfo['title']) ?>">

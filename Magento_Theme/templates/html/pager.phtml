@@ -13,12 +13,11 @@
 <?php if ($block->getCollection()->getSize()) : ?>
 
     <?php if ($block->getUseContainer()) : ?>
-    <div class="pager">
+    <div class="c-toolbar__container">
     <?php endif ?>
 
         <?php if ($block->getShowAmounts()) : ?>
-        <p class="toolbar-amount">
-            <span class="toolbar-number">
+        <div class="c-toolbar__amount">
             <?php if ($block->getLastPageNum()>1) : ?>
                 <?= $block->escapeHtml(__('Items %1 to %2 of %3 total', $block->getFirstNum(), $block->getLastNum(), $block->getTotalNum())) ?>
             <?php elseif ($block->getTotalNum() == 1) : ?>
@@ -26,16 +25,16 @@
             <?php else : ?>
                 <?= $block->escapeHtml(__('%1 Item(s)', $block->getTotalNum())) ?>
             <?php endif; ?>
-            </span>
-        </p>
+
+        </div>
         <?php endif ?>
 
         <?php if ($block->getLastPageNum()>1) : ?>
-        <div class="pages">
-            <strong class="label pages-label" id="paging-label"><?= $block->escapeHtml(__('Page')) ?></strong>
-            <ul class="items pages-items" aria-labelledby="paging-label">
+        <div class="c-pagination o-flex__item u-1/1">
+            <strong class="c-pagination__label" id="paging-label"><?= $block->escapeHtml(__('Page')) ?></strong>
+            <ul class="c-pagination__list o-list-inline" aria-labelledby="paging-label">
             <?php if (!$block->isFirstPage()) : ?>
-                <li class="item pages-item-previous">
+                <li class="c-pagination__list-item c-pagination__list-item--previous o-list-inline__item">
                     <?php $text = $block->getAnchorTextForPrevious() ? $block->getAnchorTextForPrevious() : '';?>
                     <a class="<?= $block->escapeHtmlAttr($text ? 'link ' : 'action ') ?> previous"
                        href="<?= $block->escapeUrl($block->getPreviousPageUrl()) ?>"
@@ -47,7 +46,7 @@
             <?php endif;?>
 
             <?php if ($block->canShowFirst()) : ?>
-                <li class="item">
+                <li class="c-pagination__list-item o-list-inline__item">
                     <a class="page first" href="<?= $block->escapeUrl($block->getFirstPageUrl()) ?>">
                         <span class="label"><?= $block->escapeHtml(__('Page')) ?></span>
                         <span>1</span>
@@ -56,7 +55,7 @@
             <?php endif;?>
 
             <?php if ($block->canShowPreviousJump()) : ?>
-                <li class="item">
+                <li class="c-pagination__list-item o-list-inline__item">
                     <a class="page previous jump"
                        title=""
                        href="<?= $block->escapeUrl($block->getPreviousJumpUrl()) ?>">
@@ -67,14 +66,14 @@
 
             <?php foreach ($block->getFramePages() as $_page) : ?>
                 <?php if ($block->isPageCurrent($_page)) : ?>
-                    <li class="item current">
+                    <li class="c-pagination__list-item c-pagination__list-item--current o-list-inline__item">
                         <strong class="page">
                             <span class="label"><?= $block->escapeHtml(__('You\'re currently reading page')) ?></span>
                             <span><?= $block->escapeHtml($_page) ?></span>
                         </strong>
                     </li>
                 <?php else : ?>
-                    <li class="item">
+                    <li class="c-pagination__list-item o-list-inline__item">
                         <a href="<?= $block->escapeUrl($block->getPageUrl($_page)) ?>" class="page">
                             <span class="label"><?= $block->escapeHtml(__('Page')) ?></span>
                             <span><?= $block->escapeHtml($_page) ?></span>
@@ -84,7 +83,7 @@
             <?php endforeach;?>
 
             <?php if ($block->canShowNextJump()) : ?>
-                <li class="item">
+                <li class="c-pagination__list-item o-list-inline__item">
                     <a class="page next jump" title="" href="<?= $block->escapeUrl($block->getNextJumpUrl()) ?>">
                         <span>...</span>
                     </a>
@@ -92,7 +91,7 @@
             <?php endif;?>
 
             <?php if ($block->canShowLast()) : ?>
-              <li class="item">
+              <li class="c-pagination__list-item o-list-inline__item">
                   <a class="page last" href="<?= $block->escapeUrl($block->getLastPageUrl()) ?>">
                       <span class="label"><?= $block->escapeHtml(__('Page')) ?></span>
                       <span><?= $block->escapeHtml($block->getLastPageNum()) ?></span>
@@ -101,7 +100,7 @@
             <?php endif;?>
 
             <?php if (!$block->isLastPage()) : ?>
-                <li class="item pages-item-next">
+                <li class="c-pagination__list-item c-pagination__list-item--next o-list-inline__item">
                     <?php $text = $block->getAnchorTextForNext() ? $block->getAnchorTextForNext() : '';?>
                     <a class="<?= /* @noEscape */ $text ? 'link ' : 'action ' ?> next"
                        href="<?= $block->escapeUrl($block->getNextPageUrl()) ?>"
@@ -116,9 +115,9 @@
         <?php endif; ?>
 
     <?php if ($block->isShowPerPage()) : ?>
-        <div class="limiter">
-            <strong class="limiter-label"><?= $block->escapeHtml(__('Show')) ?></strong>
-            <select id="limiter" data-mage-init='{"redirectUrl": {"event":"change"}}' class="limiter-options">
+        <div class="c-items-per-page">
+            <strong class="c-items-per-page__label"><?= $block->escapeHtml(__('Show')) ?></strong>
+            <select id="limiter" data-mage-init='{"redirectUrl": {"event":"change"}}' class="c-items-per-page__options">
                 <?php foreach ($block->getAvailableLimit() as $_key => $_limit) : ?>
                     <option value="<?= $block->escapeHtmlAttr($block->getLimitUrl($_key)) ?>"
                         <?php if ($block->isLimitCurrent($_key)) : ?>
@@ -127,7 +126,7 @@
                     </option>
                 <?php endforeach; ?>
             </select>
-            <span class="limiter-text"><?= $block->escapeHtml(__('per page')) ?></span>
+            <span class="c-items-per-page__text"><?= $block->escapeHtml(__('per page')) ?></span>
         </div>
     <?php endif ?>
 

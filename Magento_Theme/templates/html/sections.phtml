@@ -12,9 +12,9 @@ $group = $block->getGroupName();
 $groupCss = $block->getGroupCss();
 ?>
 <?php if ($detailedInfoGroup = $block->getGroupChildNames($group, 'getChildHtml')) :?>
-    <div class="sections <?= $block->escapeHtmlAttr($groupCss) ?>">
+    <div class="c-section <?= $block->escapeHtmlAttr($groupCss) ?>">
         <?php $layout = $block->getLayout(); ?>
-        <div class="section-items <?= $block->escapeHtmlAttr($groupCss) ?>-items"
+        <div class="c-section__items <?= $block->escapeHtmlAttr($groupCss) ?>-items"
              data-mage-init='{"tabs":{"openedState":"active"}}'>
             <?php foreach ($detailedInfoGroup as $name) :?>
                 <?php
@@ -25,14 +25,14 @@ $groupCss = $block->getGroupCss();
                     $alias = $layout->getElementAlias($name);
                     $label = $block->getChildData($alias, 'title');
                 ?>
-                <div class="section-item-title <?= $block->escapeHtmlAttr($groupCss) ?>-item-title"
+                <div class="c-section__item-title <?= $block->escapeHtmlAttr($groupCss) ?>-item-title"
                      data-role="collapsible">
                     <a class="<?= $block->escapeHtmlAttr($groupCss) ?>-item-switch"
                        data-toggle="switch" href="#<?= $block->escapeHtmlAttr($alias) ?>">
                         <?= /* @noEscape */ $label ?>
                     </a>
                 </div>
-                <div class="section-item-content <?= $block->escapeHtmlAttr($groupCss) ?>-item-content"
+                <div class="c-section__item-content <?= $block->escapeHtmlAttr($groupCss) ?>-item-content"
                      id="<?= $block->escapeHtmlAttr($alias) ?>"
                      data-role="content">
                     <?= /* @noEscape */ $html ?>

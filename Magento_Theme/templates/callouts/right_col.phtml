@@ -4,8 +4,8 @@
  * See COPYING.txt for license details.
  */
 ?>
-<div class="block block-banner">
-    <div class="block-content">
+<div class="c-block c-block--banner">
+    <div class="c-block__content">
         <?php if (strtolower(substr($block->getLinkUrl(), 0, 4)) === 'http') : ?>
             <a href="<?= $block->escapeUrl($block->getLinkUrl()) ?>"
                title="<?= $block->escapeHtmlAttr(__($block->getImgAlt())) ?>">
