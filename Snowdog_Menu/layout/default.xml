@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Remove the default Magento Navigation -->
+        <referenceBlock name="navigation.sections" remove="true"/>
+
+        <!-- Add the Snowdog Menu -->
+        <referenceContainer name="header.container">
+            <block name="main.menu" class="Snowdog\Menu\Block\Menu" after="-">
+                <arguments>
+                        <argument name="menu" xsi:type="string">main</argument>
+                        <argument name="css_class" xsi:type="string">o-flex__item</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
