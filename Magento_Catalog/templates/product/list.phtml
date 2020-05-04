@@ -41,12 +41,12 @@ $_helper = $this->helper(Magento\Catalog\Helper\Output::class);
      */
     $pos = $block->getPositioned();
     ?>
-    <div class="products wrapper <?= /* @noEscape */ $viewMode ?> products-<?= /* @noEscape */ $viewMode ?>">
-        <ol class="products list items product-items">
+    <div class="c-products c-products--<?= /* @noEscape */ $viewMode ?>">
+        <ol class="c-products__items o-flex o-flex--space-around o-flex--wrap">
             <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
             <?php foreach ($_productCollection as $_product) :?>
-            <li class="item product product-item">
-                <div class="product-item-info" data-container="product-<?= /* @noEscape */ $viewMode ?>">
+            <li class="c-product-card">
+                <div class="c-product-card__info" data-container="product-<?= /* @noEscape */ $viewMode ?>">
                     <?php
                     $productImage = $block->getImage($_product, $imageDisplayArea);
                     if ($pos != null) {
@@ -56,16 +56,16 @@ $_helper = $this->helper(Magento\Catalog\Helper\Output::class);
                     ?>
                     <?php // Product Image ?>
                     <a href="<?= $block->escapeUrl($_product->getProductUrl()) ?>"
-                       class="product photo product-item-photo"
+                       class="c-product-card__photo"
                        tabindex="-1">
                         <?= $productImage->toHtml() ?>
                     </a>
-                    <div class="product details product-item-details">
+                    <div class="c-product-card__details">
                         <?php
                             $_productNameStripped = $block->stripTags($_product->getName(), null, true);
                         ?>
-                        <strong class="product name product-item-name">
-                            <a class="product-item-link"
+                        <strong class="c-product-card__name">
+                            <a class="c-product-card__link"
                                href="<?= $block->escapeUrl($_product->getProductUrl()) ?>">
                                 <?= /* @noEscape */ $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
                             </a>
@@ -76,9 +76,9 @@ $_helper = $this->helper(Magento\Catalog\Helper\Output::class);
                             <?= $block->getProductDetailsHtml($_product) ?>
                         <?php endif; ?>
 
-                        <div class="product-item-inner">
-                            <div class="product actions product-item-actions"<?= strpos($pos, $viewMode . '-actions') ? $block->escapeHtmlAttr($position) : '' ?>>
-                                <div class="actions-primary"<?= strpos($pos, $viewMode . '-primary') ? $block->escapeHtmlAttr($position) : '' ?>>
+                        <div class="c-product-card__inner">
+                            <div class="c-product-card__actions-wrapper"<?= strpos($pos, $viewMode . '-actions') ? $block->escapeHtmlAttr($position) : '' ?>>
+                                <div class="c-product-card__action c-product-card__action--primary"<?= strpos($pos, $viewMode . '-primary') ? $block->escapeHtmlAttr($position) : '' ?>>
                                     <?php if ($_product->isSaleable()) :?>
                                         <?php $postParams = $block->getAddToCartPostParams($_product); ?>
                                         <form data-role="tocart-form"
@@ -93,30 +93,30 @@ $_helper = $this->helper(Magento\Catalog\Helper\Output::class);
                                             <?= $block->getBlockHtml('formkey') ?>
                                             <button type="submit"
                                                     title="<?= $block->escapeHtmlAttr(__('Add to Cart')) ?>"
-                                                    class="action tocart primary">
-                                                <span><?= $block->escapeHtml(__('Add to Cart')) ?></span>
+                                                    class="c-btn c-btn--primary">
+                                                <?= $block->escapeHtml(__('Add to Cart')) ?>
                                             </button>
                                         </form>
                                     <?php else :?>
                                         <?php if ($_product->isAvailable()) :?>
-                                            <div class="stock available"><span><?= $block->escapeHtml(__('In stock')) ?></span></div>
+                                            <div class="c-product-card__stock c-product-card__stock--available"><?= $block->escapeHtml(__('In stock')) ?></div>
                                         <?php else :?>
-                                            <div class="stock unavailable"><span><?= $block->escapeHtml(__('Out of stock')) ?></span></div>
+                                            <div class="c-product-card__stock c-product-card__stock--unavailable"><?= $block->escapeHtml(__('Out of stock')) ?></div>
                                         <?php endif; ?>
                                     <?php endif; ?>
                                 </div>
-                                <div data-role="add-to-links" class="actions-secondary"<?= strpos($pos, $viewMode . '-secondary') ? $block->escapeHtmlAttr($position) : '' ?>>
+                                <div data-role="add-to-links" class="c-product-card__action c-product-card__action--secondary"<?= strpos($pos, $viewMode . '-secondary') ? $block->escapeHtmlAttr($position) : '' ?>>
                                     <?php if ($addToBlock = $block->getChildBlock('addto')) :?>
                                         <?= $addToBlock->setProduct($_product)->getChildHtml() ?>
                                     <?php endif; ?>
                                 </div>
                             </div>
                             <?php if ($showDescription) :?>
-                                <div class="product description product-item-description">
+                                <div class="c-product-card__description">
                                     <?= /* @noEscape */ $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
                                     <a href="<?= $block->escapeUrl($_product->getProductUrl()) ?>"
                                        title="<?= /* @noEscape */ $_productNameStripped ?>"
-                                       class="action more"><?= $block->escapeHtml(__('Learn More')) ?></a>
+                                       class="c-product-card__more-link"><?= $block->escapeHtml(__('Learn More')) ?></a>
                                 </div>
                             <?php endif; ?>
                         </div>

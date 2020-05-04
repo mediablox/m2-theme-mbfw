@@ -7,9 +7,9 @@
 /** @var \Magento\Catalog\Block\Product\View\Details $block */
 ?>
 <?php if ($detailedInfoGroup = $block->getGroupSortedChildNames('detailed_info', 'getChildHtml')) :?>
-    <div class="product info detailed">
+    <div class="o-flex__item u-1/1">
         <?php $layout = $block->getLayout(); ?>
-        <div class="product data items" data-mage-init='{"tabs":{"openedState":"active"}}'>
+        <div class="c-accorditabs" data-mage-init='{"tabs":{"openedState":"active"}}'>
             <?php foreach ($detailedInfoGroup as $name) :?>
                 <?php
                 $html = $layout->renderElement($name);
@@ -19,9 +19,9 @@
                 $alias = $layout->getElementAlias($name);
                 $label = $block->getChildData($alias, 'title');
                 ?>
-                <div class="data item title"
+                <div class="c-accorditabs__title"
                      data-role="collapsible" id="tab-label-<?= $block->escapeHtmlAttr($alias) ?>">
-                    <a class="data switch"
+                    <a class="c-accorditabs__switch"
                        tabindex="-1"
                        data-toggle="trigger"
                        href="#<?= $block->escapeUrl($alias) ?>"
@@ -29,7 +29,7 @@
                         <?= /* @noEscape */ $label ?>
                     </a>
                 </div>
-                <div class="data item content"
+                <div class="c-accorditabs__content"
                      aria-labelledby="tab-label-<?= $block->escapeHtmlAttr($alias) ?>-title" id="<?= $block->escapeHtmlAttr($alias) ?>" data-role="content">
                     <?= /* @noEscape */ $html ?>
                 </div>

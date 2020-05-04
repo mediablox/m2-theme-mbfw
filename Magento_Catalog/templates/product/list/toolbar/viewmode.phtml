@@ -12,19 +12,19 @@
  */
 ?>
 <?php if ($block->isEnabledViewSwitcher()) :?>
-    <div class="modes">
+    <div class="c-modes o-flex__item u-1/2">
         <?php $_modes = $block->getModes(); ?>
         <?php if ($_modes && count($_modes) > 1) :?>
-            <strong class="modes-label" id="modes-label"><?= $block->escapeHtml(__('View as')) ?></strong>
+            <strong class="c-modes__label" id="modes-label"><?= $block->escapeHtml(__('View as')) ?></strong>
             <?php foreach ($block->getModes() as $_code => $_label) :?>
                 <?php if ($block->isModeActive($_code)) :?>
                     <strong title="<?= $block->escapeHtmlAttr($_label) ?>"
-                            class="modes-mode active mode-<?= $block->escapeHtmlAttr(strtolower($_code)) ?>"
+                            class="c-modes__mode c-modes__mode--active c-modes__mode--<?= $block->escapeHtmlAttr(strtolower($_code)) ?>"
                             data-value="<?= $block->escapeHtmlAttr(strtolower($_code)) ?>">
                         <span><?= $block->escapeHtml($_label) ?></span>
                     </strong>
                 <?php else :?>
-                    <a class="modes-mode mode-<?= $block->escapeHtmlAttr(strtolower($_code)) ?>"
+                    <a class="c-modes__mode c-modes__mode--<?= $block->escapeHtmlAttr(strtolower($_code)) ?>"
                        title="<?= $block->escapeHtmlAttr($_label) ?>"
                        href="#"
                        data-role="mode-switcher"

@@ -18,13 +18,13 @@
 ?>
 <?php if ($_additional = $block->getAdditionalData()) :?>
     <div class="additional-attributes-wrapper table-wrapper">
-        <table class="data table additional-attributes" id="product-attribute-specs-table">
-            <caption class="table-caption"><?= $block->escapeHtml(__('More Information')) ?></caption>
+        <table class="o-table o-table--fixed" id="product-attribute-specs-table">
+            <caption><?= $block->escapeHtml(__('More Information')) ?></caption>
             <tbody>
             <?php foreach ($_additional as $_data) :?>
                 <tr>
-                    <th class="col label" scope="row"><?= $block->escapeHtml($_data['label']) ?></th>
-                    <td class="col data" data-th="<?= $block->escapeHtmlAttr($_data['label']) ?>"><?= /* @noEscape */ $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>
+                    <th scope="row"><?= $block->escapeHtml($_data['label']) ?></th>
+                    <td data-th="<?= $block->escapeHtmlAttr($_data['label']) ?>"><?= /* @noEscape */ $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

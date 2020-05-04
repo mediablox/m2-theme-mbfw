@@ -11,12 +11,12 @@
  * @var $block \Magento\Catalog\Block\Product\ProductList\Toolbar
  */
 ?>
-<div class="field limiter">
+<div class="c-limiter o-flex__item u-1/2">
     <label class="label" for="limiter">
-        <span><?= $block->escapeHtml(__('Show')) ?></span>
+        <?= $block->escapeHtml(__('Show')) ?>
     </label>
-    <div class="control">
-        <select id="limiter" data-role="limiter" class="limiter-options">
+    <div class="c-limiter__control">
+        <select id="limiter" data-role="limiter" class="c-limiter__options">
             <?php foreach ($block->getAvailableLimit() as $_key => $_limit) :?>
                 <option value="<?= $block->escapeHtmlAttr($_key) ?>"
                     <?php if ($block->isLimitCurrent($_key)) :?>
@@ -27,5 +27,5 @@
             <?php endforeach; ?>
         </select>
     </div>
-    <span class="limiter-text"><?= $block->escapeHtml(__('per page')) ?></span>
+    <span class="c-limiter__text"><?= $block->escapeHtml(__('per page')) ?></span>
 </div>

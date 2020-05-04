@@ -1,9 +1,23 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
 <page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <head>
-        <remove src="mage/gallery/gallery.css"/>
-    </head>
     <body>
-        <move element="page.main.title" destination="product.info.main" before="-"/>
+        <!-- Update CSS classes for default containers -->
+        <referenceContainer name="content" htmlTag="div" htmlClass="o-flex o-flex--wrap"/>
+        <referenceContainer name="product.info.media" htmlTag="div" htmlClass="o-flex__item u-1/1 u-1/2@tablet" before="-"/>
+        <referenceContainer name="product.info.main" htmlTag="div" htmlClass="o-flex__item u-1/1 u-1/2@tablet" after="product.info.media"/>
+
+        <!-- Update CSS classes for default blocks -->
+        <referenceBlock name="page.main.title">
+            <arguments>
+                <argument name="css_class" xsi:type="string">u-h1</argument>
+                <argument name="add_base_attribute" xsi:type="string">itemprop="name"</argument>
+            </arguments>
+        </referenceBlock>
     </body>
 </page>
